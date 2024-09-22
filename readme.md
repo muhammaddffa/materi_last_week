@@ -1,0 +1,1 @@
+install kebutuhan yang akan digunakan fetch = npm i node-fetch@2, npm i multer, npm i --save-dev @types/multer, npm i form data
