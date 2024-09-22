@@ -2,8 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import registerRoutes from "./routes/registerRoutes";
 import loginRoutes from "./routes/loginRoutes";
-import uploadRoutes from "./routes/uploudFileRoutes"; // Import uploadRoutes
-
+import uploadRoutes from "./routes/uploudFileRoutes"; 
 const app = express();
 
 dotenv.config();
@@ -19,7 +18,7 @@ app.get("/", (req, res) => {
 app.use("/auth/register", registerRoutes);
 app.use("/auth/login", loginRoutes);
 
-app.use("/api/upload", uploadRoutes); // Tambahkan rute upload
+app.use("/api/upload", uploadRoutes); 
 
 
 app.listen(PORT, () => {
