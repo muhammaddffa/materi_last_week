@@ -1,8 +1,9 @@
-import express, { Router } from 'express';
-import { uploadFile, uploadFileHandler } from '../middleware/uploadFileMiddleware';
+import express from "express";
+import { uploadImageHandler } from "../controllers/uploudFileContoller";
+import uploadMiddleware from "../middleware/uploadFileMiddleware";
 
-const router: Router = express.Router();
+const router = express.Router();
 
-router.post("/", uploadFile, uploadFileHandler); 
+router.post("/", uploadMiddleware.single("image"), uploadImageHandler);
 
 export default router;

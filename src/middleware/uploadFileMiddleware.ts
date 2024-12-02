@@ -1,23 +1,24 @@
-import { Request, Response, NextFunction } from 'express';
-import multer from 'multer';
-import { uploadFileToAPI } from '../controllers/uploudFileContoller';
+import multer from "multer";
 
-const storage = multer.memoryStorage(); 
-const upload = multer({ storage });
+const storage = multer.memoryStorage();
 
-export const uploadFile = upload.single('file'); 
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 2 * 1024 * 1024,
+  },
+  fileFilter: (req, file, cb) => {
 
-export const uploadFileHandler = async (req: Request, res: Response, next: NextFunction) => {
-  const file = req.file;
-  if (!file) {
-    return res.status(400).json({ message: 'No file uploaded' });
-  }
+    if (
+      file.mimetype === "image/jpeg" ||
+      file.mimetype === "image/png" ||
+      file.mimetype === "image/jpg"
+    ) {
+      cb(null, true); 
+    } else {
+      cb(new Error("Invalid file type. Only JPEG, PNG, and JPG are allowed.") as unknown as null, false);
+    }
+  },
+});
 
-  try {
-    const data = await uploadFileToAPI(file.buffer, file.originalname);
-    return res.json(data);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: 'Internal server error' });
-  }
-};
+export default upload;
