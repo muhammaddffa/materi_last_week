@@ -4,7 +4,7 @@ import FormData from "form-data";
 const UPLOAD_API_BASE_URL = "http://localhost:4000/upload";
 
 export const uploadImageToCloudinary = async (imageBuffer: Buffer, filename: string) => {
-  try {
+  try {1
     const formData = new FormData();
     formData.append("image", imageBuffer, filename);
 

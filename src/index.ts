@@ -5,6 +5,7 @@ import loginRoutes from "./routes/loginRoutes";
 import uploadRoutes from "./routes/uploudFileRoutes";
 import creataUser from "./routes/userRoutes"
 import allUserRoutes from "./routes/userRoutes";
+import authorRoutes from "./routes/authorRoutes";
 const app = express();
 
 dotenv.config();
@@ -21,7 +22,8 @@ app.use("/auth/register", registerRoutes);
 app.use("/auth/login", loginRoutes);
 app.use("/api/users", creataUser);
 app.use("/api/users", allUserRoutes);
-app.use("/api/upload", uploadRoutes);
+app.use("/api/upload", uploadRoutes); 
+app.use("/api/author", authorRoutes);
 
 
 app.listen(PORT, () => {
