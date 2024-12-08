@@ -14,7 +14,6 @@ export const getAllAuthors = async (req, res) => {
     });
   } catch (e) {
     console.log(e);
-    
   }
 };
 
@@ -25,7 +24,45 @@ export const createAuthor = async (req, res) => {
       data: authorData,
     });
     res.status(201).send({
-        data: author
+      data: author,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAuthorByid = async (req, res) => {
+  try {
+    const authorId = req.params.id;
+    const author = await authorClient.findUnique({
+      where: {
+        id: authorId,
+      },
+      include: {
+        books: true,
+      },
+    });
+    res.status(200).send({
+      data: author,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateAuthor = async (req, res) => {
+  try {
+    const authorId = req.params.id;
+    const authorData = req.body;
+
+    const author = await authorClient.update({
+      where: {
+        id: authorId
+      },
+      data: authorData
+    })
+    res.status(200).send({
+      data: author
     })
   } catch (error) {
     console.log(error)
