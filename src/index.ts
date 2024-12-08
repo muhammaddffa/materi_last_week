@@ -3,9 +3,10 @@ import dotenv from "dotenv";
 import registerRoutes from "./routes/registerRoutes";
 import loginRoutes from "./routes/loginRoutes";
 import uploadRoutes from "./routes/uploudFileRoutes";
-import creataUser from "./routes/userRoutes"
-import allUserRoutes from "./routes/userRoutes";
-import authorRoutes from "./routes/authorRoutes";
+import authorRoutes from "./routes/author/authorRoutes";
+import bookRouter from "./routes/book/bookRoutes";
+import genreRouter from "./routes/genre/genreRoutes";
+import userRoutes from "./routes/userRoutes";
 const app = express();
 
 dotenv.config();
@@ -20,10 +21,11 @@ app.get("/", (req, res) => {
 
 app.use("/auth/register", registerRoutes);
 app.use("/auth/login", loginRoutes);
-app.use("/api/users", creataUser);
-app.use("/api/users", allUserRoutes);
-app.use("/api/upload", uploadRoutes); 
+app.use("/api/users", userRoutes);
+app.use("/api/upload", uploadRoutes);
 app.use("/api/author", authorRoutes);
+app.use("/api/book", bookRouter);
+app.use("/api/genre", genreRouter)
 
 
 app.listen(PORT, () => {

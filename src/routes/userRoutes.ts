@@ -2,9 +2,9 @@ import express, { Router } from 'express';
 import {  createUser, getAllUser } from '../controllers/userController';
 import accessValidation from '../middleware/authMiddleware';
 
-const router: Router = express.Router();
+const userRoutes = Router();
 
-router.post("/", createUser);
-router.get("/", accessValidation, getAllUser)
+userRoutes.post("/", createUser);
+userRoutes.get("/", accessValidation, getAllUser)
 
-export default router;
+export default userRoutes;
