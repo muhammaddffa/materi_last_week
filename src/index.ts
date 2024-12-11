@@ -16,7 +16,9 @@ const PORT = process.env.PORT;
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Hello, TypeScript Node Express!");
+  res.send({
+    message: "Hello, TypeScript Node Express!",
+  });
 });
 
 app.use("/auth/register", registerRoutes);
@@ -25,8 +27,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/author", authorRoutes);
 app.use("/api/book", bookRouter);
-app.use("/api/genre", genreRouter)
-
+app.use("/api/genre", genreRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
