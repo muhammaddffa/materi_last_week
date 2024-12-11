@@ -21,7 +21,7 @@ export const registerUser = async (req: Request, res: Response) => {
       data: result,
       message: `User succesfully for register`,
     });
-  } catch (e: any) {
+  } catch (e) {
     res.status(500).send({
       message: "Error creating user",
       error: e.message,

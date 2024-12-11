@@ -1,4 +1,4 @@
-import express, { Router } from 'express';
+import { Router } from 'express';
 import {  createUser, getAllUser } from '../controllers/userController';
 import accessValidation from '../middleware/authMiddleware';
 

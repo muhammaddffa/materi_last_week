@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 const genreClient = prisma.genre;
+
 export const getAllGenres = async (req, res) => {
   try {
     const allGenres = await genreClient.findMany({
