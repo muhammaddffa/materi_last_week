@@ -6,7 +6,11 @@ export const getAllAuthors = async (req, res) => {
   try {
     const allAuthors = await authorClient.findMany({
       include: {
-        books: true,
+        books:{
+          include: {
+            genre: true
+          }
+        }
       },
     });
     res.status(201).send({
