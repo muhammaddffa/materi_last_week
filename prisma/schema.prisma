@@ -35,6 +35,7 @@ model Book {
   author   Author     @relation(fields: [authorId], references: [id])
   genreId  String
   genre    Genre      @relation(fields: [genreId], references: [id])
+  image    String?
 }
 
 model Genre {

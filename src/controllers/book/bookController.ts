@@ -26,11 +26,12 @@ export const getBookById = async (req, res) => {
 
 export const createBook = async (req, res) => {
   try {
-    const { title, authorId, genreId } = req.body;
+    const { title, authorId, genreId, image} = req.body;
 
     const book = await bookClient.create({
       data: {
         title,
+        image,
         author: {
           connect: { id: authorId },
         },
@@ -49,12 +50,13 @@ export const createBook = async (req, res) => {
 export const updateBook = async (req, res) => {
   try {
     const bookId = req.params.id;
-    const { title, authorId, genreId } = req.body;
+    const { title, authorId, genreId, image } = req.body;
 
     const book = await bookClient.update({
       where: { id: bookId },
       data: {
         title,
+        image,
         author: {
           connect: { id: authorId },
         },
