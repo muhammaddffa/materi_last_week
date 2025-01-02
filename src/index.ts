@@ -7,12 +7,15 @@ import authorRoutes from "./routes/author/authorRoutes";
 import bookRouter from "./routes/book/bookRoutes";
 import genreRouter from "./routes/genre/genreRoutes";
 import userRoutes from "./routes/userRoutes";
+import cors  from "cors";
 const app = express();
+
 
 dotenv.config();
 
 const PORT = process.env.PORT;
 
+app.use(cors())
 app.use(express.json());
 
 app.get("/", (req, res) => {
